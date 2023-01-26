@@ -48,8 +48,8 @@ class _LoginPageState extends State<LoginPage> {
                 style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   labelText: 'Mot de passe',
-                  icon: Icon(Icons.lock, color: Colors.white),
-                  suffixIcon: Icon(Icons.remove_red_eye, color: Colors.white),
+                  icon: Icon(Icons.lock),
+                  suffixIcon: Icon(Icons.remove_red_eye),
                 ),
               ),
               const SizedBox(height: 40),

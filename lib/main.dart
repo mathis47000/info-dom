@@ -21,9 +21,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // color text button
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        primaryColor: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        //define color for material 3 from one color
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue).copyWith(
+          secondary: Colors.white,
+          background: Colors.lightBlue,
+        ),
+        //app bar style
+        appBarTheme: const AppBarTheme(
+          scrolledUnderElevation: 0,
+          centerTitle: true,
+        ),
+        // bottom navigation bar color
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Colors.white,
+        ),
         //style text field
         inputDecorationTheme: const InputDecorationTheme(
           labelStyle: TextStyle(color: Colors.white),
@@ -33,7 +44,10 @@ class MyApp extends StatelessWidget {
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: Colors.white),
           ),
+          iconColor: Colors.white,
+          suffixIconColor: Colors.white,
         ),
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const LoginPage(),
     );

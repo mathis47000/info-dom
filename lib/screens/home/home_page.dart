@@ -28,7 +28,7 @@ class _MyHomePageState extends State<HomePage> {
     // The container for the current page, with its background color
     // and subtle switching animation.
     var mainArea = ColoredBox(
-      color: Theme.of(context).backgroundColor,
+      color: Theme.of(context).colorScheme.background,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
         child: page,
@@ -38,8 +38,6 @@ class _MyHomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Info Dom'),
-        centerTitle: true,
-        scrolledUnderElevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
