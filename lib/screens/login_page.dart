@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:info_dom/blocs/login/login_bloc.dart';
 import 'package:info_dom/screens/home/home_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,49 +29,60 @@ class _LoginPageState extends State<LoginPage> {
         decoration: const BoxDecoration(gradient: gradient),
         padding: const EdgeInsets.all(30),
         child: SafeArea(
-          child: Column(
-            children: [
-              const Expanded(
-                flex: 2,
-                child: Icon(Icons.flutter_dash, size: 100, color: Colors.white),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
-                  labelText: 'Adresse email',
-                  icon: Icon(Icons.email, color: Colors.white),
-                ),
-                keyboardType: TextInputType.emailAddress,
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                obscureText: true,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
-                  labelText: 'Mot de passe',
-                  icon: Icon(Icons.lock),
-                  suffixIcon: Icon(Icons.remove_red_eye),
-                ),
-              ),
-              const SizedBox(height: 40),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
+          child: BlocBuilder<LoginBloc, LoginState>(
+            builder: (context, state) {
+              return Column(
+                children: [
+                  const Expanded(
+                    flex: 2,
+                    child:
+                        Icon(Icons.handshake, size: 100, color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      labelText: 'Adresse email',
+                      icon: Icon(Icons.email),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(height: 20),
+                  TextFormField(
+                    obscureText: (state as LoginInitial).isObscure,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: 'Mot de passe',
+                      icon: const Icon(Icons.lock),
+                      suffixIcon: IconButton(
+                        icon: state.isObscure
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
+                        onPressed: () =>
+                            context.read<LoginBloc>().add(TogglePassword()),
                       ),
-                    );
-                  },
-                  child: const Text('Connexion'),
-                ),
-              ),
-              const Spacer(flex: 2)
-            ],
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomePage(),
+                          ),
+                        );
+                      },
+                      child: const Text('Connexion'),
+                    ),
+                  ),
+                  const Spacer(flex: 2)
+                ],
+              );
+            },
           ),
         ),
       ),

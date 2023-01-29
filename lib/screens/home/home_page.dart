@@ -46,7 +46,7 @@ class _MyHomePageState extends State<HomePage> {
             },
           ),
         ],
-        leading: const Icon(Icons.flutter_dash),
+        leading: const Icon(Icons.handshake),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {

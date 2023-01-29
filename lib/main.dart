@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:info_dom/blocs/login/login_bloc.dart';
 import 'package:info_dom/screens/login_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,41 +17,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Info Dom',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // color text button
-        useMaterial3: true,
-        //define color for material 3 from one color
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue).copyWith(
-          secondary: Colors.white,
-          background: Colors.lightBlue,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginBloc(),
         ),
-        //app bar style
-        appBarTheme: const AppBarTheme(
-          scrolledUnderElevation: 0,
-          centerTitle: true,
-        ),
-        // bottom navigation bar color
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.white,
-        ),
-        //style text field
-        inputDecorationTheme: const InputDecorationTheme(
-          labelStyle: TextStyle(color: Colors.white),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+      ],
+      child: MaterialApp(
+        title: 'Info Dom',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // color text button
+          useMaterial3: true,
+          //define color for material 3 from one color
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: Colors.lightBlue).copyWith(
+            secondary: Colors.white,
+            background: Colors.lightBlue,
           ),
-          focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+          //app bar style
+          appBarTheme: const AppBarTheme(
+            scrolledUnderElevation: 0,
+            centerTitle: true,
           ),
-          iconColor: Colors.white,
-          suffixIconColor: Colors.white,
+          // bottom navigation bar color
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: Colors.white,
+          ),
+          //style text field
+          inputDecorationTheme: const InputDecorationTheme(
+            labelStyle: TextStyle(color: Colors.white),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.white),
+            ),
+            iconColor: Colors.white,
+            suffixIconColor: Colors.white,
+          ),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        home: const LoginPage(),
       ),
-      home: const LoginPage(),
     );
   }
 }
