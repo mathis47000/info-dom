@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:info_dom/screens/home/list_view_user.dart';
+import 'package:info_dom/screens/home/list_user/list_view_user.dart';
+import 'package:info_dom/screens/login_page.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   State<HomePage> createState() => _MyHomePageState();
 }
@@ -19,6 +22,11 @@ class _MyHomePageState extends State<HomePage> {
       case 1:
         page = const Placeholder(
           color: Colors.red,
+        );
+        break;
+      case 2:
+        page = const Placeholder(
+          color: Colors.green,
         );
         break;
       default:
@@ -42,7 +50,8 @@ class _MyHomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: () {
-              print('logout');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
             },
           ),
         ],
@@ -58,11 +67,15 @@ class _MyHomePageState extends State<HomePage> {
                   items: const [
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home),
-                      label: 'Home',
+                      label: 'Menu',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.favorite),
-                      label: 'Favorites',
+                      icon: Icon(Icons.wifi_off),
+                      label: 'Hors ligne',
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.person),
+                      label: 'Profile',
                     ),
                   ],
                   currentIndex: selectedIndex,
