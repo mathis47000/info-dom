@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:info_dom/blocs/login/login_bloc.dart';
 import 'package:info_dom/screens/login_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:info_dom/style/style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,40 +25,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Info Dom',
+        title: 'Info\'s Dom',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          // color text button
-          useMaterial3: true,
-          //define color for material 3 from one color
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: Colors.lightBlue).copyWith(
-            secondary: Colors.white,
-            background: Colors.lightBlue,
-          ),
-          //app bar style
-          appBarTheme: const AppBarTheme(
-            scrolledUnderElevation: 0,
-            centerTitle: true,
-          ),
-          // bottom navigation bar color
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            backgroundColor: Colors.white,
-          ),
-          //style text field
-          inputDecorationTheme: const InputDecorationTheme(
-            labelStyle: TextStyle(color: Colors.white),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-            ),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white),
-            ),
-            iconColor: Colors.white,
-            suffixIconColor: Colors.white,
-          ),
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+        theme: themeData,
         home: const LoginPage(),
       ),
     );

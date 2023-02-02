@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class data_display_icon extends StatelessWidget {
-  const data_display_icon({
+class DataDisplayIcon extends StatelessWidget {
+  const DataDisplayIcon({
     Key? key,
     required this.icon,
     required this.data,

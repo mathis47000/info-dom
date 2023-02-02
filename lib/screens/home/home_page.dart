@@ -45,7 +45,7 @@ class _MyHomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Info Dom'),
+        title: const Text('Info\'s Dom'),
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
@@ -55,7 +55,12 @@ class _MyHomePageState extends State<HomePage> {
             },
           ),
         ],
-        leading: const Icon(Icons.handshake),
+        leading: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Image(
+            image: AssetImage('assets/images/logo.png'),
+          ),
+        ),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {

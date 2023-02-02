@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
 import 'package:info_dom/screens/home/list_user/detail_view_user.dart';
+import 'package:info_dom/style/style.dart';
 
 class ListViewUser extends StatelessWidget {
   const ListViewUser({Key? key}) : super(key: key);
@@ -18,14 +19,10 @@ class ListViewUser extends StatelessWidget {
               ),
               title: Text(user.getName),
               subtitle: Text(user.getEmail),
-              trailing: const Icon(Icons.arrow_forward_ios),
+              trailing: trailingCard,
               onTap: () {
-                //navigate to detail view
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DetailViewUser(user: user),
-                    ));
+                //navigate to detail view with animation right to left
+                _navigationDetail(context, user);
               },
             ),
           );
@@ -34,5 +31,27 @@ class ListViewUser extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _navigationDetail(BuildContext context, User user) {
+    Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              DetailViewUser(user: user),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            var begin = const Offset(1.0, 0.0);
+            var end = Offset.zero;
+            var curve = Curves.easeInOut;
+
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+            return SlideTransition(
+              position: animation.drive(tween),
+              child: child,
+            );
+          },
+        ));
   }
 }

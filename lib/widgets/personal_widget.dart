@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
-import 'package:info_dom/widgets/data_display.dart';
 import 'package:info_dom/widgets/data_display_icon.dart';
 
 class PersonalWidget extends StatelessWidget {
@@ -39,11 +38,11 @@ class PersonalWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: const [
-                data_display_icon(
+                DataDisplayIcon(
                   icon: Icons.cake_outlined,
                   data: "12/12/2000",
                 ),
-                data_display_icon(
+                DataDisplayIcon(
                   icon: Icons.access_time_outlined,
                   data: "89 ans",
                 ),

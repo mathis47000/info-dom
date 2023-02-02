@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:info_dom/blocs/login/login_bloc.dart';
 import 'package:info_dom/screens/home/home_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:info_dom/style/style.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -11,16 +12,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  static const gradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      Colors.lightBlueAccent,
-      Colors.lightBlue,
-      Colors.blue,
-      Colors.blueAccent,
-    ],
-  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,14 +24,25 @@ class _LoginPageState extends State<LoginPage> {
             builder: (context, state) {
               return Column(
                 children: [
-                  const Expanded(
-                    flex: 2,
-                    child:
-                        Icon(Icons.handshake, size: 100, color: Colors.white),
+                  Expanded(
+                    flex: 1,
+                    //display the logo.png
+                    child: Center(
+                      child: CircleAvatar(
+                        radius: 70,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                        //from the ThemeData
+                        child: const Image(
+                          image: AssetImage('assets/images/logo.png'),
+                        ),
+                      ),
+                    ),
                   ),
                   const SizedBox(height: 20),
                   TextFormField(
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary),
                     decoration: const InputDecoration(
                       labelText: 'Adresse email',
                       icon: Icon(Icons.email),
@@ -50,7 +52,8 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(height: 20),
                   TextFormField(
                     obscureText: (state as LoginInitial).isObscure,
-                    style: const TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary),
                     decoration: InputDecoration(
                       labelText: 'Mot de passe',
                       icon: const Icon(Icons.lock),
@@ -72,14 +75,14 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => HomePage(),
+                            builder: (context) => const HomePage(),
                           ),
                         );
                       },
                       child: const Text('Connexion'),
                     ),
                   ),
-                  const Spacer(flex: 2)
+                  const Spacer(flex: 1)
                 ],
               );
             },
