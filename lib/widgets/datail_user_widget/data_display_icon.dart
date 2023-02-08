@@ -9,7 +9,6 @@ class DataDisplayIcon extends StatelessWidget {
 
   final IconData icon;
   final String data;
-
   @override
   Widget build(BuildContext context) {
     return Column(

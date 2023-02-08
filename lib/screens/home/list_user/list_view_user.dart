@@ -10,25 +10,24 @@ class ListViewUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
-      child: ListView(
-        children: User.getUsers().map<Widget>((user) {
+      child: ListView.builder(
+        itemCount: User.getUsers().length,
+        itemBuilder: (context, index) {
           return Card(
             child: ListTile(
               leading: CircleAvatar(
-                child: Text(user.getName[0]),
+                child: Text(User.getUsers()[index].getName[0]),
               ),
-              title: Text(user.getName),
-              subtitle: Text(user.getEmail),
+              title: Text(User.getUsers()[index].getName),
+              subtitle: Text(User.getUsers()[index].getAddress),
               trailing: trailingCard,
               onTap: () {
                 //navigate to detail view with animation right to left
-                _navigationDetail(context, user);
+                _navigationDetail(context, User.getUsers()[index]);
               },
             ),
           );
-        }).toList(
-          growable: false,
-        ),
+        },
       ),
     );
   }

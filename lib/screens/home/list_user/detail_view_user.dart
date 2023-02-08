@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
 import 'package:info_dom/style/style.dart';
-import 'package:info_dom/widgets/list_tile_localisation.dart';
-import 'package:info_dom/widgets/personal_widget.dart';
-import 'package:map_launcher/map_launcher.dart';
+import 'package:info_dom/widgets/datail_user_widget/list_tile_localisation.dart';
+import 'package:info_dom/widgets/datail_user_widget/list_tile_phone.dart';
+import 'package:info_dom/widgets/datail_user_widget/personal_widget.dart';
+import 'package:info_dom/widgets/datail_user_widget/preview_section_user.dart';
 
 class DetailViewUser extends StatelessWidget {
   final User user;
@@ -19,16 +20,70 @@ class DetailViewUser extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            PersonalWidget(user: user),
-            const ListTileLocalisation(),
+            PersonalWidget(
+              user: user,
+            ),
+            ListTileLocalisation(
+              user: user,
+            ),
+            ListTilePhone(
+              user: user,
+            ),
+            PreviewSectionUser(
+              user: user,
+            ),
             const Card(
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.transparent,
-                  child: Icon(Icons.phone),
+                  child: Icon(Icons.home),
                 ),
-                title: Text('Téléphone'),
-                subtitle: Text('06 00 00 00 00'),
+                title: Text('Logement'),
+                subtitle: Text('2 étages 3 chambres'),
+                trailing: trailingCard,
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Icon(Icons.clean_hands),
+                ),
+                title: Text('Accès matériel / ménage'),
+                subtitle: Text('pour le ménage, 2 fois par semaine'),
+                trailing: trailingCard,
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Icon(Icons.dry_cleaning),
+                ),
+                title: Text('Accès matériel / linges'),
+                subtitle: Text('pour le ménage, 2 fois par semaine'),
+                trailing: trailingCard,
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Icon(Icons.change_circle),
+                ),
+                title: Text('Habitudes de vie'),
+                subtitle: Text('déjeuner à 12h, dîner à 19h'),
+                trailing: trailingCard,
+              ),
+            ),
+            const Card(
+              child: ListTile(
+                leading: CircleAvatar(
+                  backgroundColor: Colors.transparent,
+                  child: Icon(Icons.shopping_cart),
+                ),
+                title: Text('Liste de courses'),
+                subtitle: Text('souvent des fruits et des légumes'),
                 trailing: trailingCard,
               ),
             ),

@@ -59,8 +59,8 @@ class _LoginPageState extends State<LoginPage> {
                       icon: const Icon(Icons.lock),
                       suffixIcon: IconButton(
                         icon: state.isObscure
-                            ? const Icon(Icons.visibility_off)
-                            : const Icon(Icons.visibility),
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
                         onPressed: () =>
                             context.read<LoginBloc>().add(TogglePassword()),
                       ),
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const HomePage(),

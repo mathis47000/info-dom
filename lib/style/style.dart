@@ -18,7 +18,7 @@ const trailingCard = Icon(
 var themeData = ThemeData(
   // color text button
   useMaterial3: true,
-  //define color for material 3 from one color
+  //define color for the theme
   colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue).copyWith(
     secondary: Colors.white,
     background: Colors.lightBlue,
@@ -44,5 +44,16 @@ var themeData = ThemeData(
     iconColor: Colors.white,
     suffixIconColor: Colors.white,
   ),
+
+  //filter chip style
+  chipTheme: const ChipThemeData(
+    backgroundColor: Colors.white,
+  ),
+
+  // alert dialog style
+  dialogTheme: const DialogTheme(
+    backgroundColor: Colors.white,
+  ),
+
   visualDensity: VisualDensity.adaptivePlatformDensity,
 );
