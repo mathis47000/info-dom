@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
+import 'package:info_dom/screens/home/list_user/house/house_map_page.dart';
+import 'package:info_dom/services/navigation.dart';
 import 'package:info_dom/style/style.dart';
 import 'package:info_dom/widgets/datail_user_widget/list_tile_localisation.dart';
 import 'package:info_dom/widgets/datail_user_widget/list_tile_phone.dart';
@@ -16,7 +18,7 @@ class DetailViewUser extends StatelessWidget {
       appBar: AppBar(
         title: Text(user.getName),
       ),
-      body: Container(
+      body: Padding(
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
@@ -32,15 +34,18 @@ class DetailViewUser extends StatelessWidget {
             PreviewSectionUser(
               user: user,
             ),
-            const Card(
+            Card(
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Icon(Icons.home),
                 ),
-                title: Text('Logement'),
-                subtitle: Text('2 étages 3 chambres'),
+                title: const Text('Logement'),
+                subtitle: const Text('2 étages 3 chambres'),
                 trailing: trailingCard,
+                onTap: () {
+                  navigationWithAnimation(context, const HouseMapPage());
+                },
               ),
             ),
             const Card(

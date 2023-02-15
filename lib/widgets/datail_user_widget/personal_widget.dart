@@ -17,7 +17,8 @@ class PersonalWidget extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              child: Text(user.getName[0]),
+              backgroundImage:
+                  AssetImage('assets/images/${user.getPictureName}'),
             ),
             Padding(
               padding: const EdgeInsets.all(20),
