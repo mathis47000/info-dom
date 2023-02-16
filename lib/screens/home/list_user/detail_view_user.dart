@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
-import 'package:info_dom/screens/home/list_user/house/house_map_page.dart';
+import 'package:info_dom/screens/home/list_user/habit_view_page.dart';
+import 'package:info_dom/screens/home/list_user/house_map_page.dart';
+import 'package:info_dom/screens/home/list_user/list_groceries_page.dart';
 import 'package:info_dom/services/navigation.dart';
 import 'package:info_dom/style/style.dart';
 import 'package:info_dom/widgets/datail_user_widget/list_tile_localisation.dart';
@@ -70,26 +72,32 @@ class DetailViewUser extends StatelessWidget {
                 trailing: trailingCard,
               ),
             ),
-            const Card(
+            Card(
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Icon(Icons.change_circle),
                 ),
-                title: Text('Habitudes de vie'),
-                subtitle: Text('déjeuner à 12h, dîner à 19h'),
+                title: const Text('Habitudes de vie'),
+                subtitle: const Text('déjeuner à 12h, dîner à 19h'),
                 trailing: trailingCard,
+                onTap: () {
+                  navigationWithAnimation(context, const HabitViewPage());
+                },
               ),
             ),
-            const Card(
+            Card(
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Icon(Icons.shopping_cart),
                 ),
-                title: Text('Liste de courses'),
-                subtitle: Text('souvent des fruits et des légumes'),
+                title: const Text('Liste de courses'),
+                subtitle: const Text('souvent des fruits et des légumes'),
                 trailing: trailingCard,
+                onTap: () {
+                  navigationWithAnimation(context, const ListGroceriesPage());
+                },
               ),
             ),
           ],
