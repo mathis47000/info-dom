@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
       resizeToAvoidBottomInset: false,
       body: Container(
         decoration: const BoxDecoration(gradient: gradient),
-        padding: const EdgeInsets.all(30),
+        padding: loginpadding,
         child: SafeArea(
           child: BlocBuilder<LoginBloc, LoginState>(
             builder: (context, state) {

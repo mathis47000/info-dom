@@ -9,28 +9,26 @@ class ListViewUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: ListView.builder(
-        itemCount: User.getUsers().length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                    'assets/images/${User.getUsers()[index].getPictureName}'),
-              ),
-              title: Text(User.getUsers()[index].getName),
-              subtitle: Text(User.getUsers()[index].getAddress),
-              trailing: trailingCard,
-              onTap: () {
-                navigationWithAnimation(
-                    context, DetailViewUser(user: User.getUsers()[index]));
-              },
+    return ListView.builder(
+      padding: padding,
+      itemCount: User.getUsers().length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            leading: CircleAvatar(
+              backgroundImage: AssetImage(
+                  'assets/images/${User.getUsers()[index].getPictureName}'),
             ),
-          );
-        },
-      ),
+            title: Text(User.getUsers()[index].getName),
+            subtitle: Text(User.getUsers()[index].getAddress),
+            trailing: trailingCard,
+            onTap: () {
+              navigationWithAnimation(
+                  context, DetailViewUser(user: User.getUsers()[index]));
+            },
+          ),
+        );
+      },
     );
   }
 }

@@ -20,9 +20,9 @@ class DetailViewUser extends StatelessWidget {
       appBar: AppBar(
         title: Text(user.getName),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: ListView(
+      body: SingleChildScrollView(
+        padding: padding,
+        child: Column(
           children: [
             PersonalWidget(
               user: user,
@@ -46,7 +46,7 @@ class DetailViewUser extends StatelessWidget {
                 subtitle: const Text('2 étages 3 chambres'),
                 trailing: trailingCard,
                 onTap: () {
-                  navigationWithAnimation(context, const HouseMapPage());
+                  navigationWithAnimation(context, HouseMapPage());
                 },
               ),
             ),

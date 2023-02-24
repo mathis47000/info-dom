@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FullScreenImage extends StatelessWidget {
-  String pictureName;
-  FullScreenImage({
-    Key? key,
-    required this.pictureName,
-  }) : super(key: key);
+  final String pictureName;
+  final String tag;
+  FullScreenImage({Key? key, required this.pictureName, required this.tag})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +13,17 @@ class FullScreenImage extends StatelessWidget {
         title: const Text('Image'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.all(10),
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                   maxHeight: MediaQuery.of(context).size.height * 0.7,
                 ),
                 child: Hero(
-                  tag: pictureName,
+                  tag: tag,
                   child: Material(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),

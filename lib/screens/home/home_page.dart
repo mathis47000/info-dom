@@ -81,6 +81,7 @@ class _MyHomePageState extends State<HomePage> {
             },
           ),
         ],
+        //change with svg logo
         leading: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Image(

@@ -11,6 +11,10 @@ const gradient = LinearGradient(
   ],
 );
 
+//primary padding
+const padding = EdgeInsets.all(10);
+const loginpadding = EdgeInsets.all(30);
+
 const trailingCard = Icon(
   Icons.arrow_forward_ios,
 );
