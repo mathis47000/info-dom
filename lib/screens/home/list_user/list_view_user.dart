@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
-import 'package:info_dom/screens/home/list_user/detail_view_user.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/detail_user_page.dart';
 import 'package:info_dom/services/navigation.dart';
 import 'package:info_dom/style/style.dart';
 
@@ -24,7 +24,7 @@ class ListViewUser extends StatelessWidget {
             trailing: trailingCard,
             onTap: () {
               navigationWithAnimation(
-                  context, DetailViewUser(user: User.getUsers()[index]));
+                  context, DetailUserPage(user: User.getUsers()[index]));
             },
           ),
         );

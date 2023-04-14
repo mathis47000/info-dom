@@ -15,7 +15,7 @@ class ListGroceriesPage extends StatelessWidget {
         child: Center(
           child: Card(
             child: DataTable(
-              columns: [
+              columns: const [
                 DataColumn(label: Text('Nom')),
                 DataColumn(label: Text('Quantité')),
                 DataColumn(

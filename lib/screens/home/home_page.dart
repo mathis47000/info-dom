@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:info_dom/models/user.dart';
 import 'package:info_dom/screens/home/list_user/list_view_user.dart';
+import 'package:info_dom/screens/home/offline/offligne_list_view_user.dart';
+import 'package:info_dom/screens/home/profil/profil_view_user.dart';
 import 'package:info_dom/screens/login_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,6 +14,14 @@ class HomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<HomePage> {
   var selectedIndex = 0;
+  User currentUser = User(
+          name: 'Mathis Bescond',
+          pictureName: 'janine_hahn.png',
+          dateOfBirth: DateTime(2001, 5, 14),
+          phoneNumber: '123456789',
+          address: '2 impasse Floréal, 47000 Agen',
+          latitude: 44.2000,
+          longitude: 0.6333);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +31,10 @@ class _MyHomePageState extends State<HomePage> {
         page = const ListViewUser();
         break;
       case 1:
-        page = const Placeholder(
-          color: Colors.red,
-        );
+        page = const OfflineListViewUser();
         break;
       case 2:
-        page = const Placeholder(
-          color: Colors.green,
-        );
+        page = ProfilViewUser(user: currentUser,);
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');

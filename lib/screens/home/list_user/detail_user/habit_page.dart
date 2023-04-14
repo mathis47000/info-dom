@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/style/style.dart';
 
-class HabitViewPage extends StatelessWidget {
-  const HabitViewPage({Key? key}) : super(key: key);
+class HabitPage extends StatelessWidget {
+  const HabitPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

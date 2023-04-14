@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:info_dom/models/user.dart';
-import 'package:info_dom/screens/home/list_user/habit_view_page.dart';
-import 'package:info_dom/screens/home/list_user/house_map_page.dart';
-import 'package:info_dom/screens/home/list_user/list_groceries_page.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/habit_page.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/house_map_page.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/household_acces_page.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/laundry_acces_page.dart';
+import 'package:info_dom/screens/home/list_user/detail_user/list_groceries_page.dart';
 import 'package:info_dom/services/navigation.dart';
 import 'package:info_dom/style/style.dart';
 import 'package:info_dom/widgets/datail_user_widget/list_tile_localisation.dart';
@@ -10,15 +12,32 @@ import 'package:info_dom/widgets/datail_user_widget/list_tile_phone.dart';
 import 'package:info_dom/widgets/datail_user_widget/personal_widget.dart';
 import 'package:info_dom/widgets/datail_user_widget/preview_section_user.dart';
 
-class DetailViewUser extends StatelessWidget {
+class DetailUserPage extends StatelessWidget {
   final User user;
-  const DetailViewUser({Key? key, required this.user}) : super(key: key);
+  const DetailUserPage({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(user.getName),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cloud_download_outlined),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => const AlertDialog(
+                        title: Text('Téléchargement'),
+                        content: LinearProgressIndicator(
+                          backgroundColor: Colors.white,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.blue),
+                        ),
+                      ));
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: padding,
@@ -50,7 +69,7 @@ class DetailViewUser extends StatelessWidget {
                 },
               ),
             ),
-            const Card(
+            Card(
               child: ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Colors.transparent,
@@ -59,17 +78,23 @@ class DetailViewUser extends StatelessWidget {
                 title: Text('Accès matériel / ménage'),
                 subtitle: Text('pour le ménage, 2 fois par semaine'),
                 trailing: trailingCard,
+                onTap: () {
+                  navigationWithAnimation(context, const HouseholdAccesPage());
+                },
               ),
             ),
-            const Card(
+            Card(
               child: ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: Colors.transparent,
                   child: Icon(Icons.dry_cleaning),
                 ),
                 title: Text('Accès matériel / linges'),
                 subtitle: Text('pour le ménage, 2 fois par semaine'),
                 trailing: trailingCard,
+                onTap: () {
+                  navigationWithAnimation(context, const LaundryAccesPage());
+                },
               ),
             ),
             Card(
@@ -82,7 +107,7 @@ class DetailViewUser extends StatelessWidget {
                 subtitle: const Text('déjeuner à 12h, dîner à 19h'),
                 trailing: trailingCard,
                 onTap: () {
-                  navigationWithAnimation(context, const HabitViewPage());
+                  navigationWithAnimation(context, const HabitPage());
                 },
               ),
             ),

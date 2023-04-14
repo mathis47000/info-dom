@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FullScreenImage extends StatelessWidget {
   final String pictureName;
   final String tag;
-  FullScreenImage({Key? key, required this.pictureName, required this.tag})
+  const FullScreenImage({Key? key, required this.pictureName, required this.tag})
       : super(key: key);
 
   @override
